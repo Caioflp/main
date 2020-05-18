@@ -14,6 +14,13 @@
 
 (define (angle z) (cdr z))
 
+(define (equ? z w)
+  (and (= (angle z) (angle w))
+       (= (magnitude z) (magnitude w))))
+
+(define (=zero? z)
+  (= (magnitude z) 0))
+
 (define (make-from-real-imag x y) 
   (cons (sqrt (+ (square x) (square y)))
         (atan y x)))
@@ -27,6 +34,8 @@
 (put 'imag-part '(polar) imag-part)
 (put 'magnitude '(polar) magnitude)
 (put 'angle '(polar) angle)
+(put 'equ? '(polar polar) equ?)
+(put '=zero? '(polar) =zero?)
 
 (put 'make-from-real-imag 'polar
      (lambda (x y) (tag (make-from-real-imag x y))))

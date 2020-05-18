@@ -9,20 +9,19 @@
 (require "complex-ben.rkt")
 (require "complex-alyssa.rkt")
 
-(define (apply-generic op . args)
-  (let ((type-tags (map type-tag args)))
-    (let ((proc (get op type-tags)))
-      (if proc
-          (apply proc (map contents args))
-          (error
-           "No method for these types -- APPLY-GENERIC"
-           (list op type-tags))))))
-
-
 (define (real-part z) (apply-generic 'real-part z))
 (define (imag-part z) (apply-generic 'imag-part z))
 (define (magnitude z) (apply-generic 'magnitude z))
 (define (angle z)     (apply-generic 'angle z))
+(define (equ? z w) (apply-generic 'equ? z w))
+(define (=zero? z) (apply-generic '=zero? z))
+
+(put 'real-part '(complex) real-part)
+(put 'imag-part '(complex) imag-part)
+(put 'magnitude '(complex) magnitude)
+(put 'angle '(complex) angle)
+(put 'equ? '(complex complex) equ?)
+(put '=zero? '(complex) =zero?)
 
 (define (make-from-real-imag x y)
   ((get 'make-from-real-imag 'rectangular) x y))

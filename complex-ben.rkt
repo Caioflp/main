@@ -18,6 +18,15 @@
   (atan (imag-part z)
         (real-part z)))
 
+(define (equ? z w)
+  (and (= (real-part z) (real-part w))
+       (= (imag-part z) (imag-part w))))
+
+(define (=zero? z)
+  (= (real-part z)
+     (imag-part z)
+     0))
+
 (define (make-from-real-imag x y)
   (cons x y))
 
@@ -31,6 +40,8 @@
 (put 'imag-part '(rectangular) imag-part)
 (put 'magnitude '(rectangular) magnitude)
 (put 'angle '(rectangular) angle)
+(put 'equ? '(rectangular rectangular) equ?)
+(put '=zero? '(rectangular) =zero?)
 
 (put 'make-from-real-imag 'rectangular 
      (lambda (x y) (tag (make-from-real-imag x y))))
