@@ -40,8 +40,8 @@
 (put 'imag-part '(rectangular) imag-part)
 (put 'magnitude '(rectangular) magnitude)
 (put 'angle '(rectangular) angle)
-(put 'equ? '(rectangular rectangular) equ?)
-(put '=zero? '(rectangular) =zero?)
+(put 'equ? '(rectangular rectangular) equ?) ;ex-2.79
+(put '=zero? '(rectangular) =zero?) ;ex-2.80
 
 (put 'make-from-real-imag 'rectangular 
      (lambda (x y) (tag (make-from-real-imag x y))))

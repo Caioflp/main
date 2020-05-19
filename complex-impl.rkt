@@ -20,8 +20,8 @@
 (put 'imag-part '(complex) imag-part)
 (put 'magnitude '(complex) magnitude)
 (put 'angle '(complex) angle)
-(put 'equ? '(complex complex) equ?)
-(put '=zero? '(complex) =zero?)
+(put 'equ? '(complex complex) equ?) ;ex-2.79
+(put '=zero? '(complex) =zero?) ;ex-2.80
 
 (define (make-from-real-imag x y)
   ((get 'make-from-real-imag 'rectangular) x y))

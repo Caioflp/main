@@ -34,8 +34,8 @@
 (put 'imag-part '(polar) imag-part)
 (put 'magnitude '(polar) magnitude)
 (put 'angle '(polar) angle)
-(put 'equ? '(polar polar) equ?)
-(put '=zero? '(polar) =zero?)
+(put 'equ? '(polar polar) equ?) ;ex-2.79
+(put '=zero? '(polar) =zero?) ;ex-2.80
 
 (put 'make-from-real-imag 'polar
      (lambda (x y) (tag (make-from-real-imag x y))))

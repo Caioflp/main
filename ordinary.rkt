@@ -24,7 +24,8 @@
 
 (put 'make 'racket-number (lambda (x) (tag x)))
 
-(put 'equ? '(racket-number racket-number) =)
+(put 'equ? '(racket-number racket-number) =) ;ex-2.79
 
-(put '=zero? '(racket-number) (curry = 0))
+(put '=zero? '(racket-number) (curry = 0)) ;ex-2.80
+
 

@@ -9,7 +9,7 @@
 (define (div x y) (apply-generic 'div x y))
 (define (exp x y) (apply-generic 'my-exp x y))
 (define (equ? x y) (apply-generic 'equ? x y))
-(define (=zero? x) (apply-generic '=zero? x))
+(define (=zero? x) (apply-generic '=zero? x)) 
 
 ;(define (numer x) (apply-generic 'numer x))
 ;(define (denom x) (apply-generic 'denom x))

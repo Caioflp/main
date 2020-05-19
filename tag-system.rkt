@@ -1,5 +1,7 @@
 #lang racket
 
+;; commented lines are what the program looked like before ex-2.78.
+
 (define (attach-tag type-tag contents)
   (if (number? contents)
       contents
