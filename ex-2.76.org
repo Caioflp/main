@@ -1,0 +1,41 @@
+* Generic operations with explicit dispatch
+
+-novos tipos
+	Modificar o corpo das definições de todas os procedimentos para
+cobrir a possibilidade de o argumento fornecido ao procedimento ser do tipo
+novo.
+
+-novos procedimentos
+	Criar um novo procedimento, especificando como ele deve operar
+sobre cada um dos tipos existentes.
+
+--------------------------------------------------------------------------------
+
+*Data directed Style
+
+-novos tipos
+	Instalar um pacote contendo o procedimento para criar objetos desse
+novo tipo e as definições dos procedimentos que atuarão sobre ele. Essas
+definições devem ser colocadas na tabela que correlaciona tipos e procedimentos,
+devidamente indexadas.
+
+-novos procedimentos
+	É possível instalar um pacote separado que coloca as versões desse
+procedimento que atuam sobre cada tipo na tabela. Entretanto, assim não seria
+possível definir esse procedimento usando o <define>, devido a conflitos de
+nomes. A solução seria utilizar um forma <lambda> no <put>.
+	Outra possibilidade seria atualizar cada um dos pacotes de tipos para
+que eles tenham a definição desse procedimento e a coloquem na tabela.
+
+--------------------------------------------------------------------------------
+
+*Message passing
+
+-novos tipos
+	Adicionar a definição do tipo, na qual deve-se considerar qual será o
+valor retornado pra cada operação que pode ser realizada sobre aquele tipo.
+
+-novos procedimentos
+	Modificar a definição de todos os tipos existentes, adicionando o que
+deve ser feito caso o novo procedimento seja aplicado a cada tipo.
+	
