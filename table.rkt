@@ -62,7 +62,7 @@
 		    (type2 (cadr type-tags))
 		    (a1 (car args))
 		    (a2 (cadr args)))
-		(if (eq? type1 type2)
+		(if (eq? type1 type2)	;<if> statement added in ex-2.81
 		    (error "No method for these types"
 			   (list op type-tags))
 		    (let ((t1->t2 (get-coercion type1 type2))

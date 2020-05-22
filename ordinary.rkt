@@ -20,7 +20,7 @@
      (lambda (x y) (tag (/ x y))))
 
 (put 'exp '(racket-number racket-number)
-     (lambda (x y) (tag (expt x y))))
+     (lambda (x y) (tag (expt x y))))	;ex-2.81
 
 (put 'make 'racket-number (lambda (x) (tag x)))
 
