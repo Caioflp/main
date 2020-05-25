@@ -52,63 +52,63 @@
 ;------------------------------apply-generic------------------------------------
 ;------------------------apply-generic (for two arguments)----------------------
 
-(define (apply-generic op . args)
-  (let ((type-tags (map type-tag args)))
-    (let ((proc (get op type-tags)))
-      (if proc
-	  (apply proc (map contents args))
-	  (if (= (length args) 2)
-	      (let ((type1 (car type-tags))
-		    (type2 (cadr type-tags))
-		    (a1 (car args))
-		    (a2 (cadr args)))
-		(if (eq? type1 type2)	;<if> statement added in ex-2.81
-		    (error "No method for these types"
-			   (list op type-tags))
-		    (let ((t1->t2 (get-coercion type1 type2))
-			  (t2->t1 (get-coercion type2 type1)))
-		      (cond (t1->t2
-			      (apply-generic op (t1->t2 a1) a2))
-			    (t2->t1
-			      (apply-generic op a1 (t2->t1 a2)))
-			    (else (error "No method for these types"
-					 (list op type-tags)))))))
-	      (error "No method for these types"
-		     (list op type-tags)))))))
-
-;----------------------apply-generic (for multiple arguments)-------------------
-
 ;(define (apply-generic op . args)
 ;  (let ((type-tags (map type-tag args)))
 ;    (let ((proc (get op type-tags)))
 ;      (if proc
 ;	  (apply proc (map contents args))
-;	  (let ((type1 (car type-tags))
-;		(other-types (cdr type-tags))
-;		(arg1 (car args))
-;		(other-args (cdr args)))
-;	    (define (apply-generic-aux count)
-;	      (let ((num-args (length args)))
-;		(if (> (+ 1 count) num-args)
+;	  (if (= (length args) 2)
+;	      (let ((type1 (car type-tags))
+;		    (type2 (cadr type-tags))
+;		    (a1 (car args))
+;		    (a2 (cadr args)))
+;		(if (eq? type1 type2)	;<if> statement added in ex-2.81
 ;		    (error "No method for these types"
 ;			   (list op type-tags))
-;		    (let ((type-ref (list-ref type-tags count)))
-;		      (let ((type-coerce (map (lambda (type)
-;					       (if (eq? type type-ref)
-;						   (lambda (x) x)
-;						   (get-coercion type type-ref)))
-;					     type-tags)))
-;		       (if (foldl (lambda (x y) (and x y)) true type-coerce)
-;			   (apply apply-generic (cons op (foldl (lambda (coerce arg inital)
-;								  (cons (coerce arg) inital))
-;								null
-;								type-coerce
-;								args)))
-;			   (apply-generic-aux (add1 count))))))))
-;	    (if (andmap (lambda (a) (eq? a type1)) other-types)
-;		(error "No method for these types"
-;		       (list op type-tags))
-;		       (apply-generic-aux 0)))))))
+;		    (let ((t1->t2 (get-coercion type1 type2))
+;			  (t2->t1 (get-coercion type2 type1)))
+;		      (cond (t1->t2
+;			      (apply-generic op (t1->t2 a1) a2))
+;			    (t2->t1
+;			      (apply-generic op a1 (t2->t1 a2)))
+;			    (else (error "No method for these types"
+;					 (list op type-tags)))))))
+;	      (error "No method for these types"
+;		     (list op type-tags)))))))
+
+;----------------------apply-generic (for multiple arguments)-------------------
+
+(define (apply-generic op . args)
+  (let ((type-tags (map type-tag args)))
+    (let ((proc (get op type-tags)))
+      (if proc
+	  (apply proc (map contents args))
+	  (let ((type1 (car type-tags))
+		(other-types (cdr type-tags))
+		(arg1 (car args))
+		(other-args (cdr args)))
+	    (define (apply-generic-aux count)
+	      (let ((num-args (length args)))
+		(if (> (+ 1 count) num-args)
+		    (error "No method for these types"
+			   (list op type-tags))
+		    (let ((type-ref (list-ref type-tags count)))
+		      (let ((type-coerce (map (lambda (type)
+					       (if (eq? type type-ref)
+						   (lambda (x) x)
+						   (get-coercion type type-ref)))
+					     type-tags)))
+		       (if (foldl (lambda (x y) (and x y)) true type-coerce)
+			   (apply apply-generic (cons op (foldl (lambda (coerce arg inital)
+								  (cons (coerce arg) inital))
+								null
+								type-coerce
+								args)))
+			   (apply-generic-aux (add1 count))))))))
+	    (if (andmap (lambda (a) (eq? a type1)) other-types)
+		(error "No method for these types"
+		       (list op type-tags))
+		(apply-generic-aux 0)))))))
 
 (provide put get show start apply-generic)
 (provide put-coercion get-coercion show-coercion start-coercion)

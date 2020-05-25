@@ -7,8 +7,8 @@
 (put 'add '(racket-number racket-number)
      (lambda (x y) (tag (+ x y))))
 
-;(put 'my-add '(racket-number racket-number racket-number racket-number)
-;     (lambda (x y w z) (tag (+ x y w z))))
+(put 'my-add '(racket-number racket-number racket-number racket-number)
+     (lambda (x y w z) (tag (+ x y w z))))
 
 (put 'sub '(racket-number racket-number)
      (lambda (x y) (tag (- x y))))

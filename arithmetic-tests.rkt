@@ -2,10 +2,10 @@
 
 (require "arithmetic-impl.rkt" "coercion-procs.rkt")
 
-;(my-add (make-rational 1 1)
-;	(make-rational 1 1)
-;	1
-;	(make-rational 1 1))
+(my-add (make-rational 1 1)
+	(make-rational 1 1)
+	1
+	(make-rational 1 1))
 ;constructors:
 ;make-complex-from-real-imag
 ;make-complex-from-mag-ang

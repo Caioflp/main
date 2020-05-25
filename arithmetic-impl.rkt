@@ -11,9 +11,9 @@
 (define (equ? x y) (apply-generic 'equ? x y))
 (define (=zero? x) (apply-generic '=zero? x)) 
 
-;(define (numer x) (apply-generic 'numer x))
-;(define (denom x) (apply-generic 'denom x))
-;(define (my-add x y w z) (apply-generic 'my-add x y w z))
+(define (numer x) (apply-generic 'numer x))
+(define (denom x) (apply-generic 'denom x))
+(define (my-add x y w z) (apply-generic 'my-add x y w z))
 
 (define (make-complex-from-real-imag x y)
   ((get 'make-from-real-imag 'complex) x y))
@@ -30,9 +30,9 @@
 (provide make-rational
 	 make-complex-from-real-imag
 	 make-complex-from-mag-ang
-;	 numer
-;	 denom
-;	 my-add
+	 numer
+	 denom
+	 my-add
 	 add
 	 sub
 	 mul
