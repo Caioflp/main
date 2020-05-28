@@ -65,9 +65,9 @@
 ;           "No method for these types -- APPLY-GENERIC"
 ;           (list op type-tags))))))
 
-;; Multiple arguments
+;; Multiple arguments - ex-2.81
 
-(define (apply-generic op . args)
+(define (apply-generic op . args) 
   (let ((type-tags (map type-tag args)))
     (let ((proc (get op type-tags)))
       (if proc
@@ -87,7 +87,7 @@
 						   (lambda (x) x)
 						   (get-coercion type type-ref)))
 					     type-tags)))
-		       (if (foldl (lambda (x y) (and x y)) true type-coerce)
+		       (if (memq false type-coerce)
 			   (apply apply-generic (cons op (foldl (lambda (coerce arg inital)
 								  (cons (coerce arg) inital))
 								null

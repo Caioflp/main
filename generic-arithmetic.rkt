@@ -11,12 +11,18 @@
 (define (equ? x y) (apply-generic 'equ? x y))
 (define (=zero? x) (apply-generic '=zero? x))
 
+(define (my-add x y w z)
+  (apply-generic 'my-add x y w z))
+
 (define (make-from-real-imag x y)
    ((get 'make-from-real-imag 'complex) x y))
 (define (make-from-mag-ang r a)
   ((get 'make-from-mag-ang 'complex) r a))
 (define (make-rational x y)
    ((get 'make 'rational) x y))
+
+(define (numer x) (apply-generic 'numer x))
+(define (denom x) (apply-generic 'denom x))
 
 ; testes
 
@@ -50,3 +56,8 @@
 (check-equal? (=zero? 0) #t) ; ex-2.79
 (check-equal? (=zero? (make-from-real-imag 3 -5)) #f) ; ex-2.80
 (check-equal? (=zero? (make-rational 3 5)) #f) ; ex-2.80
+
+(my-add 1 2 (make-rational 6 2) 4)
+
+(provide add sub mul div equ? =zero? make-from-real-imag make-from-mag-ang
+	 make-rational)
