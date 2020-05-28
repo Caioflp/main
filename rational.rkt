@@ -60,9 +60,9 @@
 
 (put '=zero? '(rational) =zero?) ; ex-2.80
 
-(put 'numer '(rational) numer)
+(put 'numer '(rational) numer) ; ex-2.82
 
-(put '(denom) '(rational) denom)
+(put 'denom '(rational) denom) ; ex-2.82
 
 
 ;; testes
