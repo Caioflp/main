@@ -87,7 +87,7 @@
 						   (lambda (x) x)
 						   (get-coercion type type-ref)))
 					     type-tags)))
-		       (if (memq false type-coerce)
+		       (if (foldl (lambda (x y) (and x y)) true type-coerce)
 			   (apply apply-generic (cons op (foldl (lambda (coerce arg inital)
 								  (cons (coerce arg) inital))
 								null

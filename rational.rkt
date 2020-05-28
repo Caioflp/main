@@ -37,6 +37,10 @@
 (define (=zero? x) ; ex-2.80
   (= (numer x) 0))
 
+(define (rational->scheme-number x)
+  (/ (numer x)
+     (denom x)))
+
 ;; interface to rest of the system
  
 (define (tag x) (attach-tag 'rational x))
@@ -63,6 +67,8 @@
 (put 'numer '(rational) numer)
 
 (put '(denom) '(rational) denom)
+
+(put-coercion 'rational 'scheme-number rational->scheme-number)
 
 
 ;; testes
