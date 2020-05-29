@@ -1,7 +1,7 @@
 #lang racket
 
 (require "table.rkt" "tag-system.rkt" "number.rkt" "complex.rkt"
-	 "rational.rkt")
+	 "rational.rkt" "integer.rkt")
 
 (define (add x y) (apply-generic 'add x y))
 (define (sub x y) (apply-generic 'sub x y))
