@@ -1,6 +1,6 @@
 #lang racket
 
-(require "table.rkt" "tag-system.rkt" "number.rkt" "complex.rkt"
+(require "table.rkt" "tag-system.rkt" "real.rkt" "complex.rkt"
 	 "rational.rkt" "integer.rkt")
 
 (define (add x y) (apply-generic 'add x y))
@@ -19,9 +19,14 @@
   ((get 'make-from-mag-ang 'complex) r a))
 (define (make-rational x y)
    ((get 'make 'rational) x y))
+(define (make-real-number x)
+  ((get 'make 'real-number) x))
+(define (make-integer x)
+  ((get 'make 'integer) x)) ; ex-2.83
 
 (define (numer x) (apply-generic 'numer x)) ; ex-2.82
 (define (denom x) (apply-generic 'denom x)) ; ex-2.82
 
 (provide add sub mul div equ? =zero? my-add make-from-real-imag make-from-mag-ang
-	 make-rational numer denom)
+	 make-rational make-real-number make-integer numer denom)
+

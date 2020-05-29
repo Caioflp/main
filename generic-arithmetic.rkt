@@ -5,7 +5,7 @@
 
 ; testes
 
-(check-equal? (add 1 2) 3)
+; (check-equal? (add 1 2) 3)
 
 (check-equal? (mul (make-rational 1 2)
                    (make-rational 1 4))
