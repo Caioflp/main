@@ -19,19 +19,18 @@
 
 (define (real->complex x) ; ex-2.83
   (make-from-real-imag x 0))
-(real->complex 4)
 
 (define (raise x) ; ex-2.83
   (let ((type (type-tag x)))
     (cond ((eq? type 'integer)
 	   (integer->rational x))
-	  ((eq? type 'rational)'
+	  ((eq? type 'rational)
 	   (rational->real x))
 	  ((eq? type 'scheme-number)
 	   (real->complex x))
 	  ((eq? type 'complex)
 	   x)
-	  (else "Error: Bad tagged datum:" datum))))
+	  (else "Error: Bad tagged datum:" x))))
 
 (put-coercion 'any 'any raise) ; ex-2.83
 

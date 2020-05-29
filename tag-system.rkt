@@ -6,22 +6,22 @@
 	(else (cons type-tag contents))))
 
 (define (type-tag datum)
-  (cond ((real? datum) ; ex-2.78
-         'scheme-number)
-	((integer? datum) ; ex-2.83
+  (cond ((integer? datum) ; ex-2.83 TODO : consertar bug com apply-generic
 	 'integer)
-        ((pair? datum)
-         (car datum))
-        (else (error "Bad tagged datum: TYPE-TAG" datum))))
+	((real? datum) ; ex-2.78
+	 'scheme-number)
+	((pair? datum)
+	 (car datum))
+	(else (error "Bad tagged datum: TYPE-TAG" datum))))
 
 (define (contents datum)
   (cond ((real? datum) ; ex-2.78
-         datum)
+	 datum)
 	((integer? datum) ; ex-2.83
 	 datum)
-        ((pair? datum)
-         (cdr datum))
-        (else (error "Bad tagged datum: CONTENTS" datum))))
+	((pair? datum)
+	 (cdr datum))
+	(else (error "Bad tagged datum: CONTENTS" datum))))
 
 
 (provide attach-tag type-tag contents)
